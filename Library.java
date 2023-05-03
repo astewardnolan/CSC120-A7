@@ -1,23 +1,40 @@
 /* This is a stub for the Library class */
 import java.util.Hashtable;
-
+/**
+ * class creates library object
+ */
 public class Library extends Building {
   private Hashtable <String, Boolean> collection;
   private boolean hasElevator;
 
 
-// First constructor, only creates Neilson library, name, address, nFloors, and Elevator all hardcoded.
+/**
+ * First constructor, only creates Neilson library, name, address, nFloors, and Elevator all hardcoded.
+    */
     public Library(){
         this("Neilson Library","1 College Lane Street Northampton, MA 01063", 4, true);
 
     }
 
     //overload now can be any library, but applies to older libraries with no elevators, Elevator boolean hardcoded to false.
+    /**
+     * overloaded library constructor
+     * @param name of library
+     * @param address of library
+     * @param nFloors number of floors
+     */
     public Library (String name, String address, int nFloors){
         this(name, address, nFloors, false);
     }
     
     //secodn overload, now library can have elevator.
+    /**
+     * second overload
+     * @param name of library
+     * @param address of library
+     * @param nFloors number of floors
+     * @param hasElevator true of false if has elevator
+     */
     public Library(String name, String address, int nFloors, boolean hasElevator) {
         super(name, address, nFloors);
         this.collection= new Hashtable<String, Boolean>();
@@ -32,6 +49,10 @@ public class Library extends Building {
     public boolean hasElevator(){
         return this.hasElevator;
       }
+      /**
+       * goes to specficied floor in library, or send error message
+       * param- floornum- number of floors
+       */
     public void goToFloor(int floorNum) {
         if (this.hasElevator){
         if (this.activeFloor == -1) {

@@ -2,7 +2,9 @@
 import java.util.ArrayList;
 
 import javax.management.RuntimeErrorException;
-
+/**
+ * class creates house object
+ */
 public class House extends Building {
   private ArrayList<String> residents;
   private boolean hasDiningRoom;
@@ -18,15 +20,32 @@ public class House extends Building {
    */
   
    // first constructor, house has hardcoded single floor, it is a single story house with no possible dining room(because it is small house) or elevator
-  public House(String name, String address){
+  /*
+   * house constructor
+   */
+   public House(String name, String address){
     this(name, address, 1, true, false);
   }
 // first overload, house now could have a dining room because it is bigger, still single story so hardcoded number of floors and no elevator
-  public House(String name, String address, boolean hasDiningRoom){
+ /**
+  * overloaded house constructor
+  * @param name of house
+  * @param address of house
+  * @param hasDiningRoom true or false if house has dining room
+  */
+public House(String name, String address, boolean hasDiningRoom){
     this(name, address, 1, hasDiningRoom, false);
   }
   // second overload, house now can be mulitple stories, have a dining room, and have an elevator possibly 
-   public House(String name, String address, int nFloors,boolean hasDiningRoom, boolean hasElevator ) {
+   /**
+    * second overload house constructor
+    * @param name house
+    * @param address house
+    * @param nFloors in house
+    * @param hasDiningRoom true or false if dining room
+    * @param hasElevator true or false if has elevator
+    */
+  public House(String name, String address, int nFloors,boolean hasDiningRoom, boolean hasElevator ) {
     super(name, address, nFloors);
     this.residents= new ArrayList<String>();
     this.hasDiningRoom= hasDiningRoom;
@@ -58,7 +77,8 @@ public class House extends Building {
   }
 
   /**
-   * Changes floor number or sends error messsage. 
+   * Changes floor number
+   * param- number of floors
    */
   public void goToFloor(int floorNum) {
     if (this.hasElevator){

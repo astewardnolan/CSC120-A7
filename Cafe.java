@@ -1,22 +1,55 @@
+
+/**
+ * creates cafe object
+ */
 public class Cafe extends Building {
     private int nCoffeeOunces; // The number of ounces of coffee remaining in inventory
     private int nSugarPackets; // The number of sugar packets remaining in inventory
     private int nCreams; // The number of "splashes" of cream remaining in inventory
     private int nCups; // The number of cups remaining in inventory
+    private int floorNum;
 
 
     //First constructor, Cafe can only be Dunkin, hard coded name
+    /**
+     * coafe constructor
+     * @param address of cafe
+     * @param nFloors in cafe
+     * @param nCoffeeOunces coffeee size
+     * @param nSugarPackets number of sugar packets
+     * @param nCreams number or creams
+     * @param nCups numbers of cups
+     */
     public Cafe(String address, int nFloors, int nCoffeeOunces, int nSugarPackets, int nCreams, int nCups){
         this("Dunkin", address, nFloors, nCoffeeOunces, nSugarPackets, nCreams, nCups);
     }
 
 
     //overload 1, the cafe only sells one size of coffee, 16oz:, so nCoffeeOunces hardcoded, now cafe can have different names.
+    /**
+     * overloaded cafe constructor
+     * @param name of cafe
+     * @param address cafe
+     * @param nFloors in cafe
+     * @param nSugarPackets number of sugar packets
+     * @param nCreams number of creams
+     * @param nCups number of cups
+     */
     public Cafe(String name, String address, int nFloors, int nSugarPackets, int nCreams, int nCups){
         this(name, address, nFloors, 16, nSugarPackets, nCreams, nCups);
     }
 
     //overload 2, cafe now has can be named anyhting, and sell multiple different sizes of coffee.  
+    /**
+     * cafe constructor
+     * @param name cafe
+     * @param address cafe
+     * @param nFloors in cafe
+     * @param nCoffeeOunces coffee size
+     * @param nSugarPackets number of sugar 
+     * @param nCreams number of creams
+     * @param nCups number of cups
+     */
     public Cafe(String name, String address, int nFloors, int nCoffeeOunces, int nSugarPackets, int nCreams, int nCups) {
         super(name, address, nFloors); 
         this.nCoffeeOunces= nCoffeeOunces;
@@ -25,6 +58,19 @@ public class Cafe extends Building {
         this.nCups=nCups;
         System.out.println("You have built a cafe: ☕");
     }
+
+      /**
+   * Changes floor number or sends error messsage. 
+   * param- number of floors
+   */
+  public void goToFloor(int floorNum) {
+    if (this.floorNum == 1) {
+        System.out.println("You are already on the first and only floor.");
+    }   
+    else{
+        throw new RuntimeException("goToFloor method invalid, cafe only has one floor");
+    }
+}
 
    /**
     * shows options of class methods

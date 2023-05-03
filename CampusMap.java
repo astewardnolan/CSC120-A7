@@ -1,6 +1,9 @@
 import java.util.ArrayList;
-//maybe create a loop which has access to add and remove all types of buildings, then u can have it all in one spot. 
 
+
+/**
+ * Creates list and map of all buildings, houses, cafes and libraries.
+ */
 public class CampusMap {
 
     ArrayList<Building> buildings;
@@ -38,6 +41,9 @@ public class CampusMap {
         return b;
     }
 
+    /**
+     * Prints out list of all buildings in array list.
+     */
     public String toString() {
         String mapString = "DIRECTORY of BUILDINGS";
 

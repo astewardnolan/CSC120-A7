@@ -1,5 +1,9 @@
 import javax.management.RuntimeErrorException;
 
+
+/**
+ * creates building objects
+ */
 public class Building {
 
     protected String name;
@@ -12,18 +16,33 @@ public class Building {
         this("<Name Unknown>", "<Address Unknown>", 1);
     }
 
-    /* Overloaded constructor with address only */
+    // Overloaded constructor with address only */
+    /**
+     * building constructor
+     * @param address building address
+     */
     public Building(String address) {
         this(); // Call default constructor
         this.address = address; // Override address
     }
 
     /* Overloaded constructor with name, address */
+    /**
+     * overloaded building constructor
+     * @param name of building 
+     * @param address of building
+     */
     public Building(String name, String address) {
         this(name, address, 1); // Call full constructor with hard-coded # floors
     }
 
     /* Full constructor */
+    /**
+     * double overloaded constructor for building
+     * @param name of building 
+     * @param address of building
+     * @param nFloors of building 
+     */
     public Building(String name, String address, int nFloors) {
         if (name != null) { this.name = name; }
         if (address != null) { this.address = address; } 
@@ -34,19 +53,33 @@ public class Building {
     }
 
     /* Accessors */
+    /**
+     * gets name of building
+     * @return name of building 
+     */
     public String getName() {
         return this.name;
     }
-
+/**
+ * gets adress of building 
+ * @return name of building
+ */
     public String getAddress() {
         return this.address;
     }
-
+/**
+ * gets number of floors in building
+ * @return number of floors
+ */
     public int getFloors() {
         return this.nFloors;
     }
 
     /* Navigation methods */
+    /**
+     * enters building
+     * @return pointer to current building
+     */
     public Building enter() {
         if (activeFloor != -1) {
             throw new RuntimeException("You are already inside this Building.");
@@ -55,7 +88,10 @@ public class Building {
         System.out.println("You are now inside " + this.name + " on the ground floor.");
         return this; // Return a pointer to the current building
     }
-
+/**
+ * EXITS BUILDING
+ * @return null because have successfully left building
+ */
     public Building exit() {
         if (this.activeFloor == -1) {
             throw new RuntimeException("You are not inside this Building. Must call enter() before exit().");
@@ -67,7 +103,10 @@ public class Building {
         this.activeFloor = -1; // We're leaving the building, so we no longer have a valid active floor
         return null; // We're outside now, so the building is null
     }
-
+/**
+ * sends person to floor entered
+ * @param floorNum floor number entered
+ */
     public void goToFloor(int floorNum) {
         if (this.activeFloor == -1) {
             throw new RuntimeException("You are not inside this Building. Must call enter() before navigating between floors.");
@@ -78,19 +117,23 @@ public class Building {
         System.out.println("You are now on floor #" + floorNum + " of " + this.name);
         this.activeFloor = floorNum;
     }
-
+/**
+ * goes up a floor
+ */
     public void goUp() {
         this.goToFloor(this.activeFloor + 1);
     }
-
+/**goes down a floor */
     public void goDown() {
         this.goToFloor(this.activeFloor - 1);
     }
-
+/**shows building options */
     public void showOptions() {
         System.out.println("Available options at " + this.name + ":\n + enter() \n + exit() \n + goUp() \n + goDown()\n + goToFloor(n)");
     }
-
+/**
+ * prints info about building
+ */
     public String toString() {
         return this.name + " is a " + this.nFloors + "-story building located at " + this.address + ".";
     }
